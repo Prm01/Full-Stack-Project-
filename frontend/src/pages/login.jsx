@@ -156,7 +156,7 @@ navigate('/')
               By continuing, you agree to our{' '}
               <a href="#" className="text-teal-600 hover:text-teal-700">Terms</a>{' '}
               and{' '}
-              <a href="#" className="text-teal-600 hover:text-teal-700">Privacy Policy</a>
+              <a href="#" className="text-teal-600 hover:text-teal-700">Privacy Policy and rule </a>
             </p>
           </div>
         </form>
