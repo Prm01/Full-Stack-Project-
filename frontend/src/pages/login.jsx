@@ -18,7 +18,7 @@ const Login = () => {
     // Add your form submission logic here
     try{
      
-      if(state==='sign Up'){
+      if(state==='signUp'){
         const {data}=await axios.post(backendUrl+'/api/user/register',{name,password,email})
         if(data.success){
           localStorage.setItem('token',data.token)
