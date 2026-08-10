@@ -2,9 +2,6 @@ import jwt from 'jsonwebtoken'
 
 const authDoctor = (req, res, next) => {
     try {
-        console.log('🔐 Auth Middleware - Headers:', req.headers);
-        console.log('🔐 Auth Header:', req.headers.authorization);
-
         let token; // ✅ Use let instead of const for reassignment
 
         // Method 1: Check Authorization header (Bearer token)
@@ -28,8 +25,6 @@ const authDoctor = (req, res, next) => {
             token = req.headers['x-auth-token'];
             console.log('✅ Found token in x-auth-token header');
         }
-
-        console.log('🔐 Extracted token:', token ? token.substring(0, 20) + '...' : 'No token');
 
         if (!token) {
             console.log('❌ No token found in any header');

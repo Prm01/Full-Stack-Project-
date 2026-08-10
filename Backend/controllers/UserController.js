@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 import cloudinary from "cloudinary";
+import crypto from "crypto";
 import doctorModel from "../models/doctorModel.js";
 import appointmentModel from "../models/appointmentModel.js";
 const cloud = cloudinary.v2;
@@ -371,8 +372,8 @@ const bookAppointment = async (req, res) => {
 
 const listAppointment = async (req, res) => {
   try {
-    const { userId } = req.userId;
-    const appointment = await appointmentModel.find(userId);
+    const userId = req.userId;
+    const appointment = await appointmentModel.find({ userId });
     res.json({ success: true, appointment });
   } catch (error) {
     console.log(error);
@@ -536,18 +537,32 @@ const verifyRazorpay=async(req,res)=>{
 
 
   try{
-    const {razorpay_order_id}=req.body
-    const orderInfo=await razorpayInstance.orders.fetch(razorpay_order_id)
-    // console.log(orderInfo)
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+    const userId = req.userId;
 
-    if(orderInfo.status==='paid'){
-   await appointmentModel.findByIdAndUpdate(orderInfo.receipt,{payment:true})
-   res.json({success:true,message:"payment Successful"})
+    const orderInfo = await razorpayInstance.orders.fetch(razorpay_order_id);
 
+    if (orderInfo.status !== 'paid') {
+      return res.json({ success: false, message: "payment failed" });
     }
-    else{
-       res.json({success:false,message:"payment failed"})
+
+    // Verify the payment signature to confirm authenticity
+    const hmac = crypto.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET);
+    hmac.update(`${razorpay_order_id}|${razorpay_payment_id}`);
+    const generatedSignature = hmac.digest("hex");
+
+    if (generatedSignature !== razorpay_signature) {
+      return res.json({ success: false, message: "Payment verification failed" });
     }
+
+    // Verify the appointment belongs to the authenticated user
+    const appointment = await appointmentModel.findById(orderInfo.receipt);
+    if (!appointment || appointment.userId.toString() !== userId.toString()) {
+      return res.json({ success: false, message: "Invalid appointment" });
+    }
+
+    await appointmentModel.findByIdAndUpdate(orderInfo.receipt, { payment: true });
+    res.json({ success: true, message: "payment Successful" });
 
   }
   catch(error){

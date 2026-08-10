@@ -1,20 +1,21 @@
 import express from 'express';
 import { changeAvailability } from '../controllers/doctorController.js'
 import { addDoctor, allDoctors, loginAdmin,appointmentsAdmin, appointmentCancel, adminDashboard,appointmentComplete } from '../controllers/adminController.js';
+import authAdmin from '../middleware/authAdmin.js';
 import upload from '../middleware/multer.js';
 
 const adminRouter = express.Router();
 
 // Simple routes - no image serving needed since we use Cloudinary URLs directly
-adminRouter.post("/add-doctor", upload.single("image"), addDoctor);
 adminRouter.post('/login', loginAdmin);
-adminRouter.post('/all-doctors', allDoctors);
-adminRouter.post('/change-availability', changeAvailability);
-adminRouter.get("/appointments",appointmentsAdmin);
-adminRouter.post("/cancel-appointment",appointmentCancel)
+adminRouter.post("/add-doctor", upload.single("image"), authAdmin, addDoctor);
+adminRouter.post('/all-doctors', authAdmin, allDoctors);
+adminRouter.post('/change-availability', authAdmin, changeAvailability);
+adminRouter.get("/appointments", authAdmin, appointmentsAdmin);
+adminRouter.post("/cancel-appointment", authAdmin, appointmentCancel)
 
-adminRouter.post("/complete-appointment",appointmentComplete)
-adminRouter.get("/dashboard",adminDashboard)
+adminRouter.post("/complete-appointment", authAdmin, appointmentComplete)
+adminRouter.get("/dashboard", authAdmin, adminDashboard)
 
 
 

@@ -162,7 +162,7 @@ const bookAppointment = async () => {
       if(response.data.success){
         toast.success(response.data.message)
         getDoctorsData();
-        navigate('/my-appointment')
+        navigate('/myappointment')
       } else {
         toast.error(response.data.message)
       }

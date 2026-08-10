@@ -2,10 +2,6 @@ import jwt from 'jsonwebtoken'
 
 const authUser = (req, res, next) => {
     try {
-        console.log('🔐 Auth Middleware - Headers:', req.headers);
-        console.log('🔐 Auth Header:', req.headers.authorization);
-        console.log('🔐 Token Header:', req.headers.token);
-
         // Try multiple ways to get the token
         let token;
 
@@ -25,8 +21,6 @@ const authUser = (req, res, next) => {
             token = req.headers['x-auth-token'];
             console.log('✅ Found token in x-auth-token header');
         }
-
-        console.log('🔐 Extracted token:', token);
 
         if (!token) {
             console.log('❌ No token found in any header');

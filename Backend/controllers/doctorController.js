@@ -69,7 +69,7 @@ const loginDoctor=async(req,res)=>{
    const isMatch=await bcrypt.compare(password,doctor.password)
 
    if(isMatch){
-    const token=jwt.sign({id:doctor._id},process.env.JWT_SECRET)
+    const token=jwt.sign({id:doctor._id},process.env.JWT_SECRET,{expiresIn:"24h"})
 
     res.json({success:true,token})
    }
@@ -164,14 +164,15 @@ const appointmentsDoctor = async (req, res) => {
 // api to mark appointment Completed for doctor panel
 const appointmentComplete=async(req,res)=>{
     try{
-     const {docId,appointmentId}=req.body
+     const docId = req.doctorId || req.body.docId;
+     const {appointmentId}=req.body
 
-     const appointmentData=appointmentModel.findById(appointmentId)
+     const appointmentData=await appointmentModel.findById(appointmentId)
 
-     if(appointmentData && appointmentData.docId===docId){
+     if(appointmentData && appointmentData.docId.toString()===docId.toString()){
 
-        await appointmentModel.findByIdAndUpdate(appointmentId,{isComplete:true})
-        return res.json({success:true,message:"Appointmnets Completed"})
+        await appointmentModel.findByIdAndUpdate(appointmentId,{isCompleted:true})
+        return res.json({success:true,message:"Appointments Completed"})
 
      }
      else{
@@ -188,18 +189,32 @@ const appointmentComplete=async(req,res)=>{
 
 const appointmentCancel=async(req,res)=>{
     try{
-     const {docId,appointmentId}=req.body
+     const docId = req.doctorId || req.body.docId;
+     const {appointmentId}=req.body
 
-     const appointmentData=appointmentModel.findById(appointmentId)
+     const appointmentData=await appointmentModel.findById(appointmentId)
 
-     if(appointmentData && appointmentData.docId===docId){
+     if(appointmentData && appointmentData.docId.toString()===docId.toString()){
 
         await appointmentModel.findByIdAndUpdate(appointmentId,{cancelled:true})
-        return res.json({success:true,message:"Appointmnets Cancelled"})
+
+        // Release the booked slot back to the doctor
+        const { slotDate, slotTime } = appointmentData;
+        const doctorData = await doctorModel.findById(docId);
+        let slots_booked = doctorData?.slots_booked || {};
+        if (slots_booked[slotDate] && Array.isArray(slots_booked[slotDate])) {
+          slots_booked[slotDate] = slots_booked[slotDate].filter((e) => e !== slotTime);
+          if (slots_booked[slotDate].length === 0) {
+            delete slots_booked[slotDate];
+          }
+          await doctorModel.findByIdAndUpdate(docId, { slots_booked });
+        }
+
+        return res.json({success:true,message:"Appointments Cancelled"})
 
      }
      else{
-         return res.json({success:false,message:"Cancelletion Failed"})
+         return res.json({success:false,message:"Cancellation Failed"})
      }
     }
     catch(error){
@@ -326,7 +341,8 @@ const doctorProfile = async (req, res) => {
 // API to Update Doctor Profile for doctor pannel
 const updateDoctorProfile=async(req,res)=>{
     try{
-     const {docId,fees,address,available}=req.body
+     const docId = req.doctorId || req.body.docId;
+     const {fees,address,available}=req.body
         await doctorModel.findByIdAndUpdate(docId,{fees,address,available})
         res.json({success:true,message:"Profile Updated"})
     }
