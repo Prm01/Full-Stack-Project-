@@ -31,7 +31,7 @@ function Header() {
                   alt="Trusted users" 
                   className="w-12 h-12 rounded-full border-2 border-white shadow-lg"
                 />
-                <div className="w-12 h-12 rounded-full bg-teal-600 border-2 border-white shadow-lg flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-teal-700 border-2 border-white shadow-lg flex items-center justify-center">
                   <span className="text-white text-sm font-bold">2K+</span>
                 </div>
                 <div className="w-12 h-12 rounded-full bg-blue-600 border-2 border-white shadow-lg flex items-center justify-center">
