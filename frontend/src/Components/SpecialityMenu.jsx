@@ -30,7 +30,7 @@ function SpecialityMenu() {
               <div className="w-20 h-20 bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl flex items-center justify-center mb-4 group-hover:from-teal-100 group-hover:to-blue-100 transition-all duration-300">
                 <img 
                   src={item.image} 
-                  alt={item.name} 
+                  alt={item.speciality} 
                   className="w-10 h-10 object-contain"
                 />
               </div>

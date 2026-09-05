@@ -77,7 +77,7 @@ const RelatedDoctors = ({ speciality, docId }) => {
                                         <div className="flex items-center gap-1">
                                             <span className="text-yellow-400">★</span>
                                             <span>4.8</span>
-                                            <span className="text-gray-400">(124)</span>
+                                            <span className="text-gray-600">(124)</span>
                                         </div>
                                         <div className="flex items-center gap-1">
                                             <span>⭐</span>

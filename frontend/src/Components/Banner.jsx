@@ -23,7 +23,7 @@ export default function Banner() {
                     navigate('/login'); 
                     window.scrollTo(0, 0); 
                 }} 
-                className='bg-white text-teal-600 hover:bg-gray-100 px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 whitespace-nowrap'
+                className='bg-white text-teal-700 hover:bg-gray-100 px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 whitespace-nowrap'
             >
                 Create Account
             </button>

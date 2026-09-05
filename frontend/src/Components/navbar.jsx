@@ -40,7 +40,7 @@ const Navbar = () => {
         <h1 className="text-2xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           QuickMed
         </h1>
-        <p className="text-xs text-gray-400 font-medium tracking-wide">INSTANT APPOINTMENTS</p>
+        <p className="text-xs text-gray-600 font-medium tracking-wide">INSTANT APPOINTMENTS</p>
       </div>
     </div>
   </NavLink>

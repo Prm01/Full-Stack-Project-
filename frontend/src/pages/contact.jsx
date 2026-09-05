@@ -88,7 +88,7 @@ const Contact = () => {
                 Learn more about our teams and job openings. Join us in revolutionizing healthcare technology.
               </p>
               
-              <button className="bg-white text-teal-600 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <button className="bg-white text-teal-700 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
                 Explore Jobs
               </button>
             </div>

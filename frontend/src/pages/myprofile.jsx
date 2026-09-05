@@ -134,7 +134,7 @@ const MyProfile = () => {
               {!editMode ? (
                 <button 
                   onClick={() => setEditMode(true)}
-                  className="bg-white text-teal-600 hover:bg-gray-100 px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
+                  className="bg-white text-teal-700 hover:bg-gray-100 px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
                 >
                   Edit Profile
                 </button>
@@ -142,7 +142,7 @@ const MyProfile = () => {
                 <button 
                   onClick={handleSave}
                   disabled={loading}
-                  className="bg-white text-teal-600 hover:bg-gray-100 px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-white text-teal-700 hover:bg-gray-100 px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? "Saving..." : "Save Information"}
                 </button>

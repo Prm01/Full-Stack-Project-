@@ -108,7 +108,7 @@ const About = () => {
           <p className="text-xl mb-8 opacity-90">
             Join thousands of satisfied users who have simplified their healthcare journey with Prescripto.
           </p>
-          <button className="bg-white text-teal-600 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg">
+          <button className="bg-white text-teal-700 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg">
             Get Started Today
           </button>
         </div>

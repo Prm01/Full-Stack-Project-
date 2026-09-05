@@ -31,10 +31,10 @@ function Header() {
                   alt="Trusted users" 
                   className="w-12 h-12 rounded-full border-2 border-white shadow-lg"
                 />
-                <div className="w-12 h-12 rounded-full bg-teal-500 border-2 border-white shadow-lg flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-teal-600 border-2 border-white shadow-lg flex items-center justify-center">
                   <span className="text-white text-sm font-bold">2K+</span>
                 </div>
-                <div className="w-12 h-12 rounded-full bg-blue-500 border-2 border-white shadow-lg flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-blue-600 border-2 border-white shadow-lg flex items-center justify-center">
                   <span className="text-white text-sm font-bold">500+</span>
                 </div>
               </div>
@@ -42,7 +42,7 @@ function Header() {
                 <p className="text-sm text-gray-600 font-medium">
                   Trusted by thousands of patients
                 </p>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-600">
                   and hundreds of doctors
                 </p>
               </div>
