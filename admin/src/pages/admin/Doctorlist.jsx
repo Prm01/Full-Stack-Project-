@@ -242,7 +242,7 @@ const DoctorsList = () => {
                             <img
                               className="w-full h-full object-cover"
                               src={doctor.image}
-                              alt={doctor.name}
+                              alt={`${doctor.name}, ${doctor.speciality}`}
                               onError={() => handleImageError(doctor._id, doctor.image)}
                               onLoad={() => console.log('✅ Image loaded:', doctor.name)}
                             />

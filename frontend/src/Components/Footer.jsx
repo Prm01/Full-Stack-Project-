@@ -10,12 +10,12 @@ const Footer = () => {
           {/* Left Section */}
           <div className="text-center md:text-left">
             <img 
-              src={assets.logo} 
-              alt="Company Logo" 
-              className="w-44 mx-auto md:mx-0 mb-4"
+              src={assets.quickmed_logo} 
+              alt="QuickMed logo" 
+              className="w-52 h-auto mx-auto md:mx-0 mb-4"
             />
             <p className="text-gray-600 leading-relaxed text-sm">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              QuickMed makes it simple to find trusted doctors, book appointments, and take better care of your health.
             </p>
             
             {/* Social Media Icons */}
@@ -58,7 +58,7 @@ const Footer = () => {
                 <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
                   <span className="text-white text-xs">✉️</span>
                 </div>
-                <span>greatstackdev@gmail.com</span>
+                <span>support@quickmed.com</span>
               </div>
             </div>
             
@@ -83,7 +83,7 @@ const Footer = () => {
         <div className="border-t border-gray-200 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-500 text-sm text-center md:text-left mb-2 md:mb-0">
-              Copyright 2024 @ Greatstack.dev - All Right Reserved.
+              Copyright 2026 @ QuickMed - All Rights Reserved.
             </p>
             <div className="flex gap-6 text-sm text-gray-500">
               <span className="hover:text-teal-600 cursor-pointer transition-colors duration-300">Privacy Policy</span>

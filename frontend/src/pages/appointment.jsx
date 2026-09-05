@@ -269,7 +269,7 @@ const bookAppointment = async () => {
             <div className="flex-shrink-0">
               <img 
                 src={docInfo.image} 
-                alt={docInfo.name}
+                alt={`${docInfo.name}, ${docInfo.speciality}`}
                 className="w-32 h-32 md:w-40 md:h-40 rounded-2xl object-cover border-4 border-teal-100 shadow-md"
               />
             </div>

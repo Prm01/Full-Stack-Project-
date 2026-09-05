@@ -65,7 +65,7 @@ function Header() {
             <div className="flex flex-wrap gap-8 mt-12 justify-center lg:justify-start">
               <div className="text-center">
                 <div className="text-2xl lg:text-3xl font-bold text-teal-600">500+</div>
-                <div className="text-sm text-gray-600">Expert Doctors</div>
+                <h2 className="text-sm text-gray-600">Expert Doctors</h2>
               </div>
               <div className="text-center">
                 <div className="text-2xl lg:text-3xl font-bold text-blue-600">10K+</div>

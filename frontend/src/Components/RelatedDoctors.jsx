@@ -52,7 +52,7 @@ const RelatedDoctors = ({ speciality, docId }) => {
                                 <div className="flex-shrink-0 mr-4">
                                     <img 
                                         src={item.image} 
-                                        alt={item.name} 
+                                        alt={`${item.name}, ${item.speciality}`} 
                                         className="w-20 h-20 rounded-xl object-cover border-2 border-gray-100"
                                     />
                                 </div>
@@ -109,7 +109,7 @@ const RelatedDoctors = ({ speciality, docId }) => {
                                 {/* Doctor Image */}
                                 <img 
                                     src={item.image} 
-                                    alt={item.name} 
+                                    alt={`${item.name}, ${item.speciality}`} 
                                     className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
                                 />
                                 

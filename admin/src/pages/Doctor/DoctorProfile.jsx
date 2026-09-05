@@ -112,7 +112,7 @@ const DoctorProfile = () => {
                   <div className="w-full rounded-2xl overflow-hidden border-4 border-teal-100 shadow-lg mb-4">
                     <img 
                       src={profileData.image} 
-                      alt={profileData.name}
+                      alt={`${profileData.name}, ${profileData.speciality}`}
                       className="w-full h-64 object-cover"
                     />
                   </div>
