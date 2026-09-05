@@ -20,13 +20,13 @@ const Footer = () => {
             
             {/* Social Media Icons */}
             <div className="flex justify-center md:justify-start gap-4 mt-4">
-              <div className="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center cursor-pointer hover:bg-teal-600 transition-colors duration-300">
+              <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center cursor-pointer hover:bg-teal-600 transition-colors duration-300">
                 <span className="text-white text-sm">f</span>
               </div>
               <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center cursor-pointer hover:bg-blue-600 transition-colors duration-300">
                 <span className="text-white text-sm">t</span>
               </div>
-              <div className="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center cursor-pointer hover:bg-teal-600 transition-colors duration-300">
+              <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center cursor-pointer hover:bg-teal-600 transition-colors duration-300">
                 <span className="text-white text-sm">in</span>
               </div>
             </div>
