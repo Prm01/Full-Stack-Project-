@@ -13,6 +13,13 @@ import razorpay from "razorpay";
 // API to register user
 const registerUser = async (req, res) => {
   try {
+    if (userModel.db.readyState !== 1) {
+      return res.status(503).json({
+        success: false,
+        message: "Database is unavailable. Please try again later.",
+      });
+    }
+
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {

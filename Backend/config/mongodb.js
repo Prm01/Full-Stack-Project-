@@ -4,18 +4,17 @@ const connectDB = async () => {
     const mongoUri = process.env.MONGODB_URI;
 
     if (!mongoUri) {
-        console.warn('MONGODB_URI is not configured. Database features are unavailable.');
-        return;
+        throw new Error('MONGODB_URI is not configured');
+    }
+
+    if (!/^mongodb(?:\+srv)?:\/\//.test(mongoUri)) {
+        throw new Error('MONGODB_URI must start with mongodb:// or mongodb+srv://');
     }
 
     mongoose.connection.on('connected', () => {
         console.log('MongoDB connected successfully');
     });
 
-    try {
-        await mongoose.connect(`${mongoUri}/Doctor`);
-    } catch (error) {
-        console.error('MongoDB connection failed:', error.message);
-    }
+    await mongoose.connect(mongoUri, { dbName: 'Doctor' });
 }
 export default connectDB;
