@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const adminPanelUrl = import.meta.env.VITE_ADMIN_PANEL_URL || "https://doctor-admin-panel-5z5p.onrender.com";
   const navigate = useNavigate();
   const { backendUrl, token, setToken } = useContext(AppContext);
 
@@ -110,7 +111,7 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
-                placeholder="Enter your email"
+                  placeholder="example@gmail.com"
                 required
               />
             </div>
@@ -152,6 +153,25 @@ const Login = () => {
                 {isSignup ? "Log In" : "Sign Up"}
               </button>
             </p>
+          </div>
+
+          <div className="mt-6 overflow-hidden rounded-2xl border border-indigo-100 bg-gradient-to-br from-indigo-50 via-white to-blue-50 p-5 text-center shadow-sm">
+            <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-200">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 14a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 7a7 7 0 0 0-14 0m14 0h1m-1 0H5" />
+              </svg>
+            </div>
+            <p className="mt-3 text-sm font-bold text-slate-900">Staff access</p>
+            <p className="mt-1 text-xs text-slate-600">Doctor and admin login is available in the staff portal.</p>
+            <a
+              href={adminPanelUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-indigo-200 transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-lg"
+            >
+              Open staff portal
+              <span aria-hidden="true">-&gt;</span>
+            </a>
           </div>
 
           {/* Additional Options */}

@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/Appcontex';
 
 const Navbar = () => {
+  const adminPanelUrl = import.meta.env.VITE_ADMIN_PANEL_URL || 'https://doctor-admin-panel-5z5p.onrender.com';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const navigate = useNavigate();
@@ -106,6 +107,17 @@ const Navbar = () => {
               >
                 Contact
               </NavLink>
+              <a
+                href={adminPanelUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50/70 px-3 py-1.5 text-xs font-bold text-indigo-700 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-300 hover:bg-indigo-100 hover:shadow-md"
+              >
+                <svg className="h-4 w-4 text-indigo-500 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 14a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 7a7 7 0 0 0-14 0m14 0h1m-1 0H5" />
+                </svg>
+                Staff login
+              </a>
             </div>
           </div>
 
@@ -249,6 +261,19 @@ const Navbar = () => {
               >
                 Contact
               </NavLink>
+              <a
+                href={adminPanelUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center justify-between rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-3 text-base font-bold text-indigo-700 transition-all duration-200 hover:bg-indigo-100"
+              >
+                <span>
+                  <span className="block">Staff login</span>
+                  <span className="mt-0.5 block text-xs font-medium text-indigo-500">For doctors and administrators</span>
+                </span>
+                <span aria-hidden="true" className="text-lg">-&gt;</span>
+              </a>
               
               {/* Mobile Auth Buttons */}
               <div className="px-3 py-2 space-y-2">
