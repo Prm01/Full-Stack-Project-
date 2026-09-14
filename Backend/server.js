@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import mongoose from 'mongoose';
 import "dotenv/config";
 import connectDB from './config/mongodb.js';
 import connectCloudinary from './config/cloudinary.js';
@@ -32,7 +33,12 @@ app.get('/',(req,res)=>{
 
 })
 app.get('/health',(req,res)=>{
-    res.json({ success: true, message: 'API is healthy' });
+    const databaseReady = mongoose.connection.readyState === 1;
+    res.status(databaseReady ? 200 : 503).json({
+        success: databaseReady,
+        message: databaseReady ? 'API and database are healthy' : 'Database is not connected',
+        databaseState: mongoose.connection.readyState,
+    });
 })
 // Static folder for images
 app.use('/uploads', express.static('uploads'));

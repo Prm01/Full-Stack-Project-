@@ -23,5 +23,7 @@ Frontend and admin static sites:
 - Set `VITE_BACKEND_URL` to the backend URL, including `https://` and without a trailing slash, then redeploy
 - Add a rewrite from `/*` to `/index.html` with status `200`; this is required because both apps use `BrowserRouter`
 
-To verify the backend before testing the apps, open its root URL. It should return `API is Working....`.
+To verify the backend before testing the apps, open its `/health` URL. It must return JSON with `success: true`; a `503` response means the backend cannot connect to MongoDB.
+
+For MongoDB Atlas, add `0.0.0.0/0` to Network Access while diagnosing Render connectivity, confirm the database user password is URL-encoded in `MONGODB_URI`, and redeploy the backend after changing environment variables. Do not expose the URI in frontend variables.
 
