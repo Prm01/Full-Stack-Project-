@@ -11,7 +11,7 @@ const AppContextProvider = (props) => {
   const [userData, setUserData] = useState(null);
 
   const currencySymbol = "₹";
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = (import.meta.env.VITE_BACKEND_URL || "").replace(/\/+$/, "");
 
   // Set axios default headers when token changes
   useEffect(() => {
@@ -25,6 +25,13 @@ const AppContextProvider = (props) => {
   }, [token]);
 
   const getDoctorsData = async () => {
+    if (!backendUrl) {
+      const message = "Backend URL is missing. Set VITE_BACKEND_URL and rebuild the frontend.";
+      console.error(message);
+      toast.error(message);
+      return;
+    }
+
     try {
       const { data } = await axios.get(backendUrl + "/api/doctor/list");
       if (data.success) {

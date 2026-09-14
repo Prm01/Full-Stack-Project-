@@ -15,7 +15,9 @@ connectCloudinary();
 
 // middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',').map((url) => url.trim()) : true
+}));
 
 // api endpoints
 
@@ -28,6 +30,9 @@ app.use('/api/user',userRouter);
 app.get('/',(req,res)=>{
     res.send('API is Working....');
 
+})
+app.get('/health',(req,res)=>{
+    res.json({ success: true, message: 'API is healthy' });
 })
 // Static folder for images
 app.use('/uploads', express.static('uploads'));
